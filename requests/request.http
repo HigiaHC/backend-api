@@ -1,0 +1,24 @@
+@HOST=http://localhost:3333
+
+### -------------------------- Request --------------------------------------
+
+### ========== List Requests ==========
+GET {{HOST}}/requests/0x37727b7cAb2c433a816190c6E3Dd0FdfC2B9216D
+
+### ========== Create Request ==========
+POST {{HOST}}/requests/create/
+Content-Type: application/json
+
+{
+    "patient": "0x37727b7cAb2c433a816190c6E3Dd0FdfC2B9216D",
+    "name": "Can I access?"
+}
+
+### ========== Answer Request ==========
+POST {{HOST}}/requests/answer/
+Content-Type: application/json
+
+{
+    "id": 2,
+    "answer": false
+}
