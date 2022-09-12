@@ -8,8 +8,9 @@ const routes = express.Router();
 routes.get('/patients', PatientController.index);
 
 //Request Controller
-routes.get('/requests/:id', RequestController.index);
+routes.get('/requests/:address', RequestController.index);
 routes.post('/requests/create', RequestController.create);
 routes.post('/requests/answer', RequestController.answer);
+routes.get('/requests/answer/:id', RequestController.checkAnswer);
 
 module.exports = routes;

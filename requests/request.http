@@ -10,9 +10,9 @@ POST {{HOST}}/requests/create/
 Content-Type: application/json
 
 {
-    "patient": "0x133D5D2a0965408c6f9a2797c825E3E797BE234C",
+    "address": "0x133D5D2a0965408c6f9a2797c825E3E797BE234C",
     "name": "Dr. Tito",
-    "description": "Can I access?"
+    "description": "Can I access your data?"
 }
 
 ### ========== Answer Request ==========
@@ -23,3 +23,8 @@ Content-Type: application/json
     "id": 2,
     "answer": false
 }
+
+### ==========  Check Request Answer ==========
+GET {{HOST}}/requests/answer/5
+Authorization: c210f438-7211-45c9-9d16-dc0a0a7a1302
+Content-Type: application/json
