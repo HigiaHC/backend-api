@@ -8,8 +8,16 @@ exports.up = function (knex) {
 
         table.string('patient').notNullable();
         table.string('name').notNullable();
+        table.string('description').notNullable();
         table.boolean('pending').notNullable().defaultTo(true);
         table.boolean('accepted').defaultTo(null);
+
+
+        table.string('key').notNullable();
+        table.string('salt').notNullable();
+        table.boolean('readAnswer').notNullable().defaultTo(false);
+        table.string('token').defaultTo(null);
+
     })
 };
 

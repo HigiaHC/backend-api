@@ -3,15 +3,16 @@
 ### -------------------------- Request --------------------------------------
 
 ### ========== List Requests ==========
-GET {{HOST}}/requests/0x37727b7cAb2c433a816190c6E3Dd0FdfC2B9216D
+GET {{HOST}}/requests/0x133D5D2a0965408c6f9a2797c825E3E797BE234C
 
 ### ========== Create Request ==========
 POST {{HOST}}/requests/create/
 Content-Type: application/json
 
 {
-    "patient": "0x37727b7cAb2c433a816190c6E3Dd0FdfC2B9216D",
-    "name": "Can I access?"
+    "patient": "0x133D5D2a0965408c6f9a2797c825E3E797BE234C",
+    "name": "Dr. Tito",
+    "description": "Can I access?"
 }
 
 ### ========== Answer Request ==========
