@@ -62,7 +62,8 @@ module.exports = {
     async answer(request, response) {
         const {
             id = null,
-            answer = null
+            answer = null,
+            token = null
         } = request.body;
 
         if (answer === null)
@@ -72,7 +73,7 @@ module.exports = {
             return response.status(400).json({ error: 'id must be passed' });
 
         await connection('requests')
-            .update({ pending: false, accepted: answer })
+            .update({ pending: false, accepted: answer, token: token })
             .where('id', id);
 
         return response.json({});
