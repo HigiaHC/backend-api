@@ -1,6 +1,7 @@
 const express = require('express');
 const PatientController = require('./controllers/PatientController');
 const RequestController = require('./controllers/RequestController');
+const ResourceController = require('./controllers/ResourceController');
 
 const routes = express.Router();
 
@@ -12,5 +13,8 @@ routes.get('/requests/:address', RequestController.index);
 routes.post('/requests/create', RequestController.create);
 routes.post('/requests/answer', RequestController.answer);
 routes.get('/requests/answer/:id', RequestController.checkAnswer);
+
+//Resource Controller
+routes.get('/resources/:patient', ResourceController.index);
 
 module.exports = routes;

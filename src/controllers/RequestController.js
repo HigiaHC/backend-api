@@ -103,6 +103,13 @@ module.exports = {
         if (sharingRequest[0].pending)
             return response.json({ response: 'this request is still pending' });
 
+        if (sharingRequest[0].readAnswer)
+            return response.status(400).json({ response: 'cannot read the answer twice' });
+
+        await connection('requests')
+            .update({ readAnswer: true, token: null })
+            .where('id', id);
+
         return response.json({ id: id, token: sharingRequest[0].token });
     }
 }

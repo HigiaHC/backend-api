@@ -8,7 +8,7 @@ class Web3Service {
         this.contract_abi = configuration.abi;
 
         this.web3 = new Web3(
-            Web3.givenProvider || 'http://localhost:8545'
+            Web3.givenProvider || 'http://localhost:7545'
         );
 
         this.contract = new this.web3.eth.Contract(
