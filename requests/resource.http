@@ -1,0 +1,7 @@
+@HOST=http://localhost:3333
+
+### -------------------------- Resource --------------------------------------
+
+### ========== List Resources ==========
+GET {{HOST}}/resources/0x14D2906b456d5EF8191b6f7F8A37Cb89f15a8800
+Authorization: 3caf6753-9353-40bb-bf3a-aa9eaee34c61
