@@ -10,6 +10,7 @@ exports.up = function (knex) {
         table.string('description').notNullable();
         table.string('type').notNullable();
         table.string('fields').notNullable();
+        table.string('from').notNullable();
         table.boolean('created').notNullable().defaultTo(false);
     })
 };

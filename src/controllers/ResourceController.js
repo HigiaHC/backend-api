@@ -57,7 +57,8 @@ module.exports = {
             patient = null,
             description = null,
             type = null,
-            fields = null
+            fields = null,
+            from = null
         } = request.body;
 
         if (patient === null)
@@ -71,6 +72,9 @@ module.exports = {
 
         if (fields === null)
             return response.status(400).json({ error: 'fields must be passed' });
+
+        if (from === null)
+            return response.status(400).json({ error: 'from must be passed' });
 
         switch (type.toLowerCase()) {
             case 'patient':
@@ -86,9 +90,23 @@ module.exports = {
             patient: patient.toLowerCase(),
             description: description,
             type: type,
-            fields: fields
+            fields: fields,
+            from: from
         });
 
         return response.json({ success: 'resource request sent to patient', id: id });
+    },
+
+    async setCreated(request, response) {
+        const { id = null } = request.params;
+
+        if (id === null)
+            return response.status(400).json({ error: 'id must be passed' });
+
+        await connection('requests')
+            .update({ created: true })
+            .where('id', id);
+
+        return response.json({});
     }
 }

@@ -18,5 +18,6 @@ routes.get('/requests/answer/:id', RequestController.checkAnswer);
 routes.get('/resources/:patient', ResourceController.index);
 routes.post('/resources', ResourceController.create);
 routes.get('/resources/requests/:address', ResourceController.createRequests);
+routes.put('/resources/requests/:id', ResourceController.setCreated);
 
 module.exports = routes;
