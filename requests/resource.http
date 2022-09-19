@@ -3,5 +3,33 @@
 ### -------------------------- Resource --------------------------------------
 
 ### ========== List Resources ==========
-GET {{HOST}}/resources/0x14D2906b456d5EF8191b6f7F8A37Cb89f15a8800
-Authorization: 3caf6753-9353-40bb-bf3a-aa9eaee34c61
+GET {{HOST}}/resources/0x8e7C04aef5EaD2C512b2d18d71AC3b25d8eD21ce
+Authorization: 9153e8a3-e39c-4962-818a-7a369f718c82
+
+### ========== List Resources Create Requests ==========
+GET {{HOST}}/resources/requests/0x8e7C04aef5EaD2C512b2d18d71AC3b25d8eD21ce
+Authorization: 9153e8a3-e39c-4962-818a-7a369f718c82
+
+
+
+### -------------------------- Create Resource --------------------------------------
+
+### ========== Create Patient ==========
+POST {{HOST}}/resources/
+Authorization: 9153e8a3-e39c-4962-818a-7a369f718c82
+Content-Type: application/json
+
+{
+    "patient": "0x8e7C04aef5EaD2C512b2d18d71AC3b25d8eD21ce",
+    "description": "Recurso dele 2",
+    "type": "Patient",
+    "fields": {
+        "name": "Jhon Doe",
+        "active": true,
+        "email": "jhondoe@example.com",
+        "phone": 11992366841,
+        "address": "Prof. Licinio 522",
+        "birthDate": 981504000,
+        "gender": "Male"
+    }
+}

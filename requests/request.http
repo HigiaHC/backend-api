@@ -3,14 +3,14 @@
 ### -------------------------- Request --------------------------------------
 
 ### ========== List Requests ==========
-GET {{HOST}}/requests/0x14D2906b456d5EF8191b6f7F8A37Cb89f15a8800
+GET {{HOST}}/requests/0x8e7C04aef5EaD2C512b2d18d71AC3b25d8eD21ce
 
 ### ========== Create Request ==========
 POST {{HOST}}/requests/create/
 Content-Type: application/json
 
 {
-    "address": "0x14D2906b456d5EF8191b6f7F8A37Cb89f15a8800",
+    "address": "0x8e7C04aef5EaD2C512b2d18d71AC3b25d8eD21ce",
     "name": "Dr. Tito",
     "description": "Can I access your data?"
 }
@@ -25,6 +25,6 @@ Content-Type: application/json
 }
 
 ### ==========  Check Request Answer ==========
-GET {{HOST}}/requests/answer/8
-Authorization: d438dad2-545b-4bcb-a71a-2ea21af2b264
+GET {{HOST}}/requests/answer/15
+Authorization: 0ca3da19-702a-4a1e-bb8b-dfef96a7c415
 Content-Type: application/json
