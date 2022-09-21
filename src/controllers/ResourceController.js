@@ -3,13 +3,12 @@ const unixToDate = require("../utils/date");
 const { isPatientValid } = require('../utils/resources/patientValidator');
 
 const connection = require('../database/connection');
+const fhirApi = require('../services/fhir');
 
 module.exports = {
     async index(request, response) {
         const { patient = null } = request.params;
         const key = request.headers.authorization;
-        console.log(patient);
-        console.log(key);
 
         const web3 = new Web3Service();
 
@@ -35,6 +34,32 @@ module.exports = {
         }
 
         return response.json(resources);
+    },
+
+    async show(request, response) {
+        const { patient = null } = request.params;
+        const key = request.headers.authorization;
+
+        const web3 = new Web3Service();
+
+        if (patient === null)
+            return response.status(400).json({ error: 'id must be passed' });
+
+        if (key === null)
+            return response.status(400).json({ error: 'key must be passed' });
+
+        let isValid = await web3.contract.methods.validateToken(patient, key).call().catch(e => {
+            return response.status(400)
+                .json({ error: e });
+        });
+
+        if (isValid) {
+            const resource = await fhirApi.get(`/${params.type}/${params.id}`);
+            if (resource.data !== undefined) {
+                return response.json(resource.data);
+            }
+        }
+        return response.json({});
     },
 
     async createRequests(request, response) {
@@ -103,7 +128,7 @@ module.exports = {
         if (id === null)
             return response.status(400).json({ error: 'id must be passed' });
 
-        await connection('requests')
+        await connection('resources')
             .update({ created: true })
             .where('id', id);
 

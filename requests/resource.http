@@ -3,12 +3,15 @@
 ### -------------------------- Resource --------------------------------------
 
 ### ========== List Resources ==========
-GET {{HOST}}/resources/0x8e7C04aef5EaD2C512b2d18d71AC3b25d8eD21ce
-Authorization: 9153e8a3-e39c-4962-818a-7a369f718c82
+GET {{HOST}}/resources/0x608812286c676b0e6ac80AD8af4D201ea677Dc63
+Authorization: c1242be9-8e6e-4d7c-a765-175731abb1dd
 
 ### ========== List Resources Create Requests ==========
-GET {{HOST}}/resources/requests/0x8e7C04aef5EaD2C512b2d18d71AC3b25d8eD21ce
-Authorization: 9153e8a3-e39c-4962-818a-7a369f718c82
+GET {{HOST}}/resources/requests/0x608812286c676b0e6ac80AD8af4D201ea677Dc63
+Authorization: c1242be9-8e6e-4d7c-a765-175731abb1dd
+
+
+### ========== Get specific resource ==========
 
 
 
@@ -20,8 +23,8 @@ Authorization: 9153e8a3-e39c-4962-818a-7a369f718c82
 Content-Type: application/json
 
 {
-    "patient": "0x8e7C04aef5EaD2C512b2d18d71AC3b25d8eD21ce",
-    "description": "Recurso dele 2",
+    "patient": "0x608812286c676b0e6ac80AD8af4D201ea677Dc63",
+    "description": "Recurso do homem",
     "type": "Patient",
     "from": "Dr. Tito",
     "fields": {
