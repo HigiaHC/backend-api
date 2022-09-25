@@ -10,7 +10,7 @@ POST {{HOST}}/requests/create/
 Content-Type: application/json
 
 {
-    "address": "0x8e7C04aef5EaD2C512b2d18d71AC3b25d8eD21ce",
+    "address": "0x608812286c676b0e6ac80AD8af4D201ea677Dc63",
     "name": "Dr. Tito",
     "description": "Can I access your data?"
 }
@@ -25,6 +25,6 @@ Content-Type: application/json
 }
 
 ### ==========  Check Request Answer ==========
-GET {{HOST}}/requests/answer/15
-Authorization: 0ca3da19-702a-4a1e-bb8b-dfef96a7c415
+GET {{HOST}}/requests/answer/1
+Authorization: 27ebc365-657a-4d6d-9c18-cc5b431a141b
 Content-Type: application/json
