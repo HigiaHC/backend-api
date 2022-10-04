@@ -20,11 +20,11 @@ POST {{HOST}}/requests/answer/
 Content-Type: application/json
 
 {
-    "id": 2,
-    "answer": false
+    "id": 13,
+    "answer": true
 }
 
 ### ==========  Check Request Answer ==========
-GET {{HOST}}/requests/answer/1
-Authorization: 27ebc365-657a-4d6d-9c18-cc5b431a141b
+GET {{HOST}}/requests/answer/13
+Authorization: 53e52d15-0952-4a87-a99a-c970e8771f2b
 Content-Type: application/json

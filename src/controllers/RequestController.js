@@ -110,6 +110,6 @@ module.exports = {
             .update({ readAnswer: true, token: null })
             .where('id', id);
 
-        return response.json({ id: id, token: sharingRequest[0].token });
+        return response.status(201).json({ id: id, token: sharingRequest[0].token });
     }
 }
