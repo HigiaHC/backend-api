@@ -28,10 +28,12 @@ module.exports = {
             resources.push({
                 id: resource[0],
                 description: resource[1],
-                type: resource[2],
-                date: unixToDate(resource[3])
+                type: resource[3],
+                date: unixToDate(resource[4]),
+                from: resource[2]
             });
         }
+        console.log(resources);
 
         return response.json(resources);
     },
