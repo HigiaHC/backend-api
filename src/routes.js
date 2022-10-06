@@ -17,6 +17,7 @@ routes.get('/requests/answer/:id', RequestController.checkAnswer);
 //Resource Controller
 routes.get('/resources/:patient', ResourceController.index);
 routes.post('/resources', ResourceController.create);
+routes.get('/resources/:patient/:type/:id', ResourceController.show);
 routes.get('/resources/requests/:address', ResourceController.createRequests);
 routes.post('/resources/requests/created/:id', ResourceController.setCreated);
 

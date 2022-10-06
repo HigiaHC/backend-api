@@ -39,7 +39,7 @@ module.exports = {
     },
 
     async show(request, response) {
-        const { patient = null } = request.params;
+        const { patient = null, type = null, id = null } = request.params;
         const key = request.headers.authorization;
 
         const web3 = new Web3Service();
@@ -50,13 +50,19 @@ module.exports = {
         if (key === null)
             return response.status(400).json({ error: 'key must be passed' });
 
+        if (type === null)
+            return response.status(400).json({ error: 'type must be passed' });
+
+        if (id === null)
+            return response.status(400).json({ error: 'id must be passed' });
+
         let isValid = await web3.contract.methods.validateToken(patient, key).call().catch(e => {
             return response.status(400)
                 .json({ error: e });
         });
-
+        console.log(isValid);
         if (isValid) {
-            const resource = await fhirApi.get(`/${params.type}/${params.id}`);
+            const resource = await fhirApi.get(`/${type}/${id}`);
             if (resource.data !== undefined) {
                 return response.json(resource.data);
             }
