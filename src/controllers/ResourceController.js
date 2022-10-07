@@ -4,6 +4,7 @@ const { isPatientValid } = require('../utils/resources/patientValidator');
 
 const connection = require('../database/connection');
 const fhirApi = require('../services/fhir');
+const { isObservationValid } = require('../utils/resources/observationValidator');
 
 module.exports = {
     async index(request, response) {
@@ -112,7 +113,17 @@ module.exports = {
         switch (type.toLowerCase()) {
             case 'patient':
                 if (!isPatientValid(fields))
-                    return response.status(400).json({ error: 'fields are not valid' });
+                    return response.status(400).json({ error: 'patient fields are not valid' });
+                break;
+
+            case 'observation':
+                if (!isObservationValid(fields))
+                    return response.status(400).json({ error: 'observation fields are not valid' });
+                break;
+
+            case 'diagnostic':
+                if (!isDiagnosticValid(fields))
+                    return response.status(400).json({ error: 'diagnostic fields are not valid' });
                 break;
 
             default:
