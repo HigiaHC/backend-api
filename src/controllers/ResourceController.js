@@ -5,6 +5,7 @@ const { isPatientValid } = require('../utils/resources/patientValidator');
 const connection = require('../database/connection');
 const fhirApi = require('../services/fhir');
 const { isObservationValid } = require('../utils/resources/observationValidator');
+const { isDiagnosticValid } = require('../utils/resources/diagnosticValidator');
 
 module.exports = {
     async index(request, response) {
