@@ -4,11 +4,15 @@ const observationKeys = [
     'note',
     'interpretation',
     'referenceRange',
-    'component'
+    'component',
+    'performer',
+    'code'
 ];
 
 module.exports = {
     isObservationValid(observation) {
+        console.log('here')
+        console.log(observation)
         if (
             typeof observation !== 'object' ||
             observation === null ||
@@ -16,10 +20,10 @@ module.exports = {
         )
             return false;
 
-        for (let i = 0; i < observationKeys.length; i++) {
-            if (!(observationKeys[i] in observation))
+        Object.keys(observation).forEach(key => {
+            if (!(key in observationKeys))
                 return false;
-        }
+        });
 
         return true;
     }

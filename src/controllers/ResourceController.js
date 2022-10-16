@@ -6,6 +6,7 @@ const connection = require('../database/connection');
 const fhirApi = require('../services/fhir');
 const { isObservationValid } = require('../utils/resources/observationValidator');
 const { isDiagnosticValid } = require('../utils/resources/diagnosticValidator');
+const { isMedicationRequestValid } = require('../utils/resources/medicationRequestValidator');
 
 module.exports = {
     async index(request, response) {
@@ -122,11 +123,15 @@ module.exports = {
                     return response.status(400).json({ error: 'observation fields are not valid' });
                 break;
 
-            case 'diagnostic':
+            case 'diagnosticreport':
                 if (!isDiagnosticValid(fields))
                     return response.status(400).json({ error: 'diagnostic fields are not valid' });
                 break;
-
+            case 'medicationrequest':
+                if (!isMedicationRequestValid(fields))
+                    return response.status(400).json({ error: 'medication request fields are not valid' });
+                break;
+    
             default:
                 return response.status(400).json({ error: 'resource type not defined' });
         }

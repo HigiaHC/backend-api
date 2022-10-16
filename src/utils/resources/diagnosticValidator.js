@@ -1,4 +1,6 @@
 const diagnosticKeys = [
+    'code',
+    'performer',
     'subject',
     'issued',
     'result',
@@ -14,10 +16,10 @@ module.exports = {
         )
             return false;
 
-        for (let i = 0; i < diagnosticKeys.length; i++) {
-            if (!(diagnosticKeys[i] in diagnostic))
+        Object.keys(diagnostic).forEach(key => {
+            if (!(key in diagnosticKeys))
                 return false;
-        }
+        });
 
         return true;
     }
