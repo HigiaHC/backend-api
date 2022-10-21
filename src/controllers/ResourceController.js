@@ -65,9 +65,13 @@ module.exports = {
         });
         console.log(isValid);
         if (isValid) {
-            const resource = await fhirApi.get(`/${type}/${id}`);
-            if (resource.data !== undefined) {
-                return response.json(resource.data);
+            try {
+                const resource = await fhirApi.get(`/${type}/${id}`);
+                if (resource.data !== undefined) {
+                    return response.json(resource.data);
+                }
+            } catch (error) {
+                return response.json({error});
             }
         }
         return response.json({});
@@ -158,5 +162,62 @@ module.exports = {
             .where('id', id);
 
         return response.json({});
-    }
+    },
+
+    async update(request, response) {
+        const {
+            patient = null,
+            description = null,
+            type = null,
+            fields = null,
+            from = null
+        } = request.body;
+
+        if (patient === null)
+            return response.status(400).json({ error: 'patient must be passed' });
+
+        if (description === null)
+            return response.status(400).json({ error: 'description must be passed' });
+
+        if (type === null)
+            return response.status(400).json({ error: 'type must be passed' });
+
+        if (fields === null)
+            return response.status(400).json({ error: 'fields must be passed' });
+
+        if (from === null)
+            return response.status(400).json({ error: 'from must be passed' });
+
+        switch (type.toLowerCase()) {
+            case 'patient':
+                if (!isPatientValid(fields))
+                    return response.status(400).json({ error: 'patient fields are not valid' });
+                break;
+
+            case 'observation':
+                if (!isObservationValid(fields))
+                    return response.status(400).json({ error: 'observation fields are not valid' });
+                break;
+
+            case 'diagnosticreport':
+                if (!isDiagnosticValid(fields))
+                    return response.status(400).json({ error: 'diagnostic fields are not valid' });
+                break;
+            case 'medicationrequest':
+                if (!isMedicationRequestValid(fields))
+                    return response.status(400).json({ error: 'medication request fields are not valid' });
+                break;
+    
+            default:
+                return response.status(400).json({ error: 'resource type not defined' });
+        }
+        console.log(fields)
+        try {
+            let res = await fhirApi.put(`/${type}/${fields.id}`, fields);
+            return response.json({ success: 'resource updated'});
+        } catch (error) {
+            return
+            return response.json({ error });
+        }
+    },
 }
