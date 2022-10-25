@@ -25,20 +25,22 @@ module.exports = {
             return response.status(400)
                 .json({ error: e });
         });
+        if (resourcesArray) {
+            let resources = [];
+            for (let resource of resourcesArray) {
+                resources.push({
+                    id: resource[0],
+                    description: resource[1],
+                    type: resource[3],
+                    date: unixToDate(resource[4]),
+                    from: resource[2]
+                });
+            }
+            console.log(resources);
 
-        let resources = [];
-        for (let resource of resourcesArray) {
-            resources.push({
-                id: resource[0],
-                description: resource[1],
-                type: resource[3],
-                date: unixToDate(resource[4]),
-                from: resource[2]
-            });
+            return response.json(resources);
         }
-        console.log(resources);
-
-        return response.json(resources);
+        return response.json({});
     },
 
     async show(request, response) {
